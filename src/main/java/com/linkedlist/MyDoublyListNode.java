@@ -4,16 +4,16 @@ package com.linkedlist;
  * AuThor：StAY_
  * Create:2020/2/12
  */
-
-public class MyDoublyListNode {
-    public class DoublyListNode{
-        int val;
-        DoublyListNode prev = null;
-        DoublyListNode next=null;
-        public DoublyListNode(int val){
-            this.val = val;
-        }
+class DoublyListNode{
+    int val;
+    DoublyListNode prev = null;
+    DoublyListNode next=null;
+    public DoublyListNode(int val){
+        this.val = val;
     }
+}
+public class MyDoublyListNode {
+
 
     public DoublyListNode head;
     public DoublyListNode tail;
