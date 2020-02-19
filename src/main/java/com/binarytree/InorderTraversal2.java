@@ -8,7 +8,7 @@ import java.util.Stack;
  * AuThor：StAY_
  * Create:2020/2/19
  */
-public class InorderTraversal {
+public class InorderTraversal2 {
     public List<Integer> inorderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         List<Integer> list = new ArrayList<>();
