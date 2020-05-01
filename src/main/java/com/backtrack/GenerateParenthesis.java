@@ -23,7 +23,7 @@ public class GenerateParenthesis {
             return ;
         }
 
-
+        //在选择判断条件时，只需要关注左括号的添加条件（左括号还有剩余）和右括号的添加条件（右括号数多于左括号数）即可，不需要在意此时在递归的第几层，因为每一层的添加条件都是一样的
         if(left>0){
             s.append('(');
             backstrack(left-1,right,s);
