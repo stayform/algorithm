@@ -13,12 +13,12 @@ import java.util.Arrays;
  */
 public class HeapSort {
     public static void sort(int[] arr){
-        //1.构建大顶堆
+        //1.构建大顶堆 初步构建的大顶堆同层之间可能顺序不对 所以要进行后续调整
         for(int i=arr.length/2-1;i>=0;i--){//从第一个非叶子结点开始
             adjustHeap(arr,i,arr.length);
         }
 
-        //2.调整
+        //2.调整 从最后一个元素开始，调整方法是将最后一个元素和堆顶进行交换，然后再调用adjustHeap()将最后一个元素下沉到它该在的位置
         for(int j=arr.length-1;j>0;j--){
             swap(arr,0,j);
             adjustHeap(arr,0,j);
