@@ -22,9 +22,9 @@ public class TwoSum {
                 }
             }
         }
-        double total=Math.pow(6,n);
+        double total=Math.pow((double)6,(double)n);
         double[] ans = new double[5*n+1];
-        for(int i=n;i<6*n;i++){
+        for(int i=n;i<=6*n;i++){
             ans[i-n]=(double)(dp[n][i]/total);
         }
         return ans;
