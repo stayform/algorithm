@@ -35,4 +35,34 @@ public class PalindromeLink {
         head.next = null;
         return newHead;
     }
+
+    /**
+     * 方法二、不用递归反转链表后半截
+     *  public boolean isPalindrome(ListNode head) {
+     *         if(head==null||head.next==null) return true;
+     *         ListNode fast=head;
+     *         ListNode slow=head;
+     *         while(fast.next!=null&&fast.next.next!=null){
+     *             slow=slow.next;
+     *             fast=fast.next.next;
+     *         }
+     *         ListNode head2 = slow.next;
+     *         ListNode nextTemp;
+     *         while(head2.next!=null){
+     *           nextTemp=head2.next.next;
+     *           head2.next.next=slow.next;
+     *           slow.next=head2.next;
+     *           head2.next=nextTemp;
+     *         }
+     *         slow=slow.next;
+     *         while(slow!=null){
+     *             if(head.val!=slow.val){
+     *                 return false;
+     *             }
+     *             head=head.next;
+     *             slow=slow.next;
+     *         }
+     *         return true;
+     *     }
+     */
 }

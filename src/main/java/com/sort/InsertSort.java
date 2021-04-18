@@ -12,13 +12,14 @@ package com.sort;
  * 若没有插入的操作，则该元素应该是最小的，插入到nums[0]
  */
 public class InsertSort {
+    /**
     public static void sort(int[] nums){
         if(nums.length<=1)
             return;
         for(int i=1;i<nums.length;i++){
             int now = nums[i];//now中储存即将进行操作的数据
             boolean hasInsert = false;
-            for(int j=i;j>0;j--){
+            for(int j=i;j>0;j--){//从有序的最后一个往前比较
                 if(nums[j-1]>now){
                     nums[j]=nums[j-1];
                 }else{
@@ -29,6 +30,25 @@ public class InsertSort {
             }
             if(!hasInsert)
                 nums[0]=now;
+        }
+    }*/
+    public static void sort(int[] nums){
+        if(nums.length<2)
+            return ;
+        for(int i=1;i<nums.length;i++){
+            int now = nums[i];
+            boolean isInsert=false;
+            for(int j=i;j>0;j--){
+                if(nums[j-1]>now){
+                    nums[j]=nums[j-1];
+                }else{
+                    nums[j]=now;
+                    isInsert=true;
+                    break;
+                }
+            }
+            if(!isInsert)
+            nums[0]=now;
         }
     }
 

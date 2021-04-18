@@ -29,7 +29,7 @@ public class ReversePolish {
                 case "/":
                     x=stack.pop();
                     y=stack.pop();
-                    stack.push((Integer) (y/x));
+                    stack.push((y/x));
                     break;
                 default:
                     stack.push(Integer.valueOf(s));

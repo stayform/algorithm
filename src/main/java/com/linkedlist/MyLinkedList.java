@@ -55,10 +55,12 @@ public class MyLinkedList {
         node.next=cur.next;
         cur.next=node;
         size++;
+
     }
 
     /** Delete the index-th node in the linked list, if the index is valid. */
     public void deleteAtIndex(int index) {
+
         if (index < 0 || index >= size) return;
         ListNode cur = head;
 

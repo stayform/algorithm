@@ -8,6 +8,7 @@ import java.util.List;
  * Create:2020/4/29
  */
 //全排列
+
 public class Permute {
     List<List<Integer>> res = new LinkedList<>();
     public List<List<Integer>> permute(int[] nums) {

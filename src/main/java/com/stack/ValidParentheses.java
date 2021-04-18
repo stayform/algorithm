@@ -34,11 +34,7 @@ public class ValidParentheses {
                     break;
             }
         }
-        if(stack.isEmpty()){
-            return true;
-        }else{
-            return false;
-        }
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {

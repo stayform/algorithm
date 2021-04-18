@@ -5,59 +5,124 @@ package thread;
  * Create:2020/4/5
  */
 public class WaitAndNotify {
+    /**打印奇偶数
     private static Object lock=new Object();
     private static  int i=0;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    while(i<10){
+                while(i<20){
+                    try {
                         synchronized (lock) {
-                            if (i % 2 == 0) {
-                                System.out.println("由线程"+Thread.currentThread().getName()+"打印 偶数"+ i);
+                            if(i%2==0){
+                                System.out.println(Thread.currentThread().getName()+" 输出偶数 "+i);
                                 i++;
-                            } else {
+                            }else{
                                 lock.notify();
                                 lock.wait();
                             }
                         }
+                    }catch(Exception e){
+                        e.printStackTrace();
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
             }
-        }).start();
-        Thread.sleep(1000);
+        },"Thread0").start();
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    while(i<10){
+                while(i<20){
+                    try {
                         synchronized (lock) {
-                            if (i % 2 == 1) {
-                                System.out.println("由线程"+Thread.currentThread().getName()+"打印 奇数" + i);
+                            if(i%2==1){
+                                System.out.println(Thread.currentThread().getName()+" 输出奇数 "+i);
                                 i++;
-
-                            } else {
+                            }else{
                                 lock.notify();
                                 lock.wait();
                             }
                         }
+                    }catch(Exception e){
+                        e.printStackTrace();
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
             }
-        }).start();
+        },"Thread1").start();
 
+    }*/
 
-
+    private static Object obj = new Object();
+    private static int i=0;
+    public static void main(String[] args) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(i<30){
+                    try{
+                        synchronized (obj){
+                            if(i%3==0){
+                                System.out.println(Thread.currentThread().getName()+"  A");
+                                i++;
+                            }else{
+                                obj.notifyAll();//唤醒所有在等待状态的线程，notify/notifyAll() 的执行只是唤醒沉睡的线程，而不会立即释放锁要等到wait方法这个线程才会释放对象锁
+                                obj.wait();//释放对象锁
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        },"ThreadA").start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(i<30){
+                    try{
+                        synchronized (obj){
+                            if(i%3==1){
+                                System.out.println(Thread.currentThread().getName()+"  B");
+                                i++;
+                            }else{
+                                obj.notifyAll();
+                                obj.wait();
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        },"ThreadB").start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(i<30){
+                    try{
+                        synchronized (obj){
+                            if(i%3==2){
+                                System.out.println(Thread.currentThread().getName()+"  C");
+                                i++;
+                            }else{
+                                obj.notifyAll();
+                                obj.wait();
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        },"ThreadC").start();
     }
+
+
 }
 /**
- * 信号量实现法
+ *
  * public class Signal {
  *     private static volatile int signal = 0;
  *

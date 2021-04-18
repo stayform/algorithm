@@ -1,7 +1,9 @@
 package com.doublepointer.slidingwindow;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * AuThor：StAY_
@@ -19,6 +21,7 @@ public class MinWindow {
         //window记录窗口里字符情况 needs记录t字符串的情况（是个固定的表）
         Map<Character,Integer> window = new HashMap<>();
         Map<Character,Integer> needs = new HashMap<>();
+        
         //初始化needs
         for(int i=0;i<t.length();i++){
             //getOrDefault(t.charAt(i),0)+1 needs如果包含t.charAt(i)这个字符，取出value再+1，如果不包含，取0+1

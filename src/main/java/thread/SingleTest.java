@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 
 //单线程线程池
 public class SingleTest {
+    /**
         public static void main(String[] args) {
             ExecutorService single = Executors.newSingleThreadExecutor();//创建一个单线程的线程池
             for(int i=0;i<5;i++){//共有五个任务
@@ -26,6 +27,25 @@ public class SingleTest {
                 });
             }
             single.shutdown();
+        }*/
+    public static void main(String[] args) {
+        ExecutorService single = Executors.newSingleThreadExecutor();
+        for(int i=0;i<5;i++){
+            final int index=i;
+            single.execute(new Runnable(){
+                @Override
+                public void run() {
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                    System.out.println(sdf.format(new Date()));
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
+        single.shutdown();
+    }
 }
 

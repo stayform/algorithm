@@ -1,5 +1,7 @@
 package com.backtrack;
 
+import java.util.ArrayList;
+
 /**
  * AuThor：StAY_
  * Create:2020/5/20
@@ -50,5 +52,7 @@ public class Exist {
             }
         }
         visited[x][y]=false;//当前元素上下左右都不符合就取消对当前元素的访问，转而开辟另一条路径
+        ArrayList<Integer> l = new ArrayList<>();
+
     }
 }

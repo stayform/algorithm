@@ -9,7 +9,7 @@ import java.util.Queue;
  * AuThor：StAY_
  * Create:2020/2/21
  */
-//二叉树层序遍历
+//二叉树层序遍历  一层一层输出
 public class LevelOrder {
     List<List<Integer>> list = new ArrayList<>();
     Queue<TreeNode> queue = new LinkedList<>();
@@ -31,8 +31,6 @@ public class LevelOrder {
             }
             list.add(level);
         }
-
-
         return list;
     }
 }
